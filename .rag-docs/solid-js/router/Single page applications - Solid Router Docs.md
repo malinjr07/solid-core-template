@@ -1,0 +1,11 @@
+Rendering modes
+
+When deploying applications that use a client-side router without relying on Server-Side Rendering, it is important that redirects to the index page are handled properly. This prevents the CDN or hosting service from returning a "not found" error when accessing URLs that do not correspond to files.
+
+Each provider has a different way of doing this. For example, Netlify provides a `_redirects` file that contains:
+
+Vercel, on the other hand, requires a rewrites section in your `vercel.json`:
+
+```css
+{  "rewrites": [    {      "source": "/(.*)",      "destination": "/index.html"    }  ]}
+```

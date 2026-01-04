@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    // General
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "target": "ESNext",
+
+    // Modules
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+
+        // Import Aliases
+    "baseUrl": "./src",
+    "paths": {
+      "@/common/*": ["components/common/*"],
+      "@/core/*": ["components/core/*"],
+      "@/layouts/*": ["components/layouts/*"],
+      "@/shadCn/*": ["components/shadCn/*"],
+      "@/libs/*": ["utils/libs/*"],
+      "@/hooks/*": ["utils/hooks/*"],
+      "@/services/*": ["utils/services/*"],
+      "@/stores/*": ["utils/stores/*"],
+      "@/types/*": ["utils/types/*"],
+      "@/query/*": ["utils/query/*"],
+      "@/utils/*": ["utils/*"],
+      "@/components/*": ["components/*"]
+    },
+    
+    // Type Checking & Safety
+    "strict": true,
+    "types": ["vite/client"]
+  }
+}

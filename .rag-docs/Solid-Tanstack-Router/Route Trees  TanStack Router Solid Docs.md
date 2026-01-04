@@ -1,0 +1,71 @@
+TanStack Router uses a nested route tree to match up the URL with the correct component tree to render.
+
+To build a route tree, TanStack Router supports:
+
+-   [File-Based Routing](https://tanstack.com/router/latest/docs/framework/solid/routing/file-based-routing)
+-   [Code-Based Routing](https://tanstack.com/router/latest/docs/framework/solid/routing/code-based-routing)
+
+Both methods support the exact same core features and functionality, but **file-based routing requires less code for the same or better results**. For this reason, **file-based routing is the preferred and recommended way** to configure TanStack Router. Most of the documentation is written from the perspective of file-based routing.
+
+[
+
+## Route Trees
+
+](https://tanstack.com/router/latest/docs/framework/solid/routing/route-trees#route-trees)
+
+Nested routing is a powerful concept that allows you to use a URL to render a nested component tree. For example, given the URL of /blog/posts/123, you could create a route hierarchy that looks like this:
+
+```bash
+├── blog
+│   ├── posts
+│   │   ├── $postId
+```
+
+And render a component tree that looks like this:
+
+```php-template
+<Blog>
+  <Posts>
+    <Post postId="123" />
+  </Posts>
+</Blog>
+```
+
+Let's take that concept and expand it out to a larger site structure, but with file-names now:
+
+```bash
+/routes
+├── __root.tsx
+├── index.tsx
+├── about.tsx
+├── posts/
+│   ├── index.tsx
+│   ├── $postId.tsx
+├── posts.$postId.edit.tsx
+├── settings/
+│   ├── profile.tsx
+│   ├── notifications.tsx
+├── _pathlessLayout/
+│   ├── route-a.tsx
+├── ├── route-b.tsx
+├── files/
+│   ├── $.tsx
+```
+
+The above is a valid route tree configuration that can be used with TanStack Router! There's a lot of power and convention to unpack with file-based routing, so let's break it down a bit.
+
+[
+
+## Route Tree Configuration
+
+](https://tanstack.com/router/latest/docs/framework/solid/routing/route-trees#route-tree-configuration)
+
+Route trees can be configured using a few different ways:
+
+-   [Flat Routes](https://tanstack.com/router/latest/docs/framework/solid/routing/file-based-routing#flat-routes)
+-   [Directories](https://tanstack.com/router/latest/docs/framework/solid/routing/file-based-routing#directory-routes)
+-   [Mixed Flat Routes and Directories](https://tanstack.com/router/latest/docs/framework/solid/routing/file-based-routing#mixed-flat-and-directory-routes)
+-   [Virtual File Routes](https://tanstack.com/router/latest/docs/framework/solid/routing/virtual-file-routes)
+-   [Code-Based Routes](https://tanstack.com/router/latest/docs/framework/solid/routing/code-based-routing)
+
+Please be sure to check out the full documentation links above for each type of route tree, or just proceed to the next section to get started with file-based routing.
