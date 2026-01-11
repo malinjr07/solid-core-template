@@ -12,7 +12,7 @@ trigger: always_on
 
 ### Primary Directive: Maintain Project Scope in Workspace Memory
 
-For all development tasks, you MUST maintain and reference project scope information from the designated workspace memory directories.
+For all development tasks, you MUST maintain and reference project scope information from the designated workspace directories.
 
 ## Workspace Structure Requirements
 

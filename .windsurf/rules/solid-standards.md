@@ -12,8 +12,8 @@ trigger: always_on
 
 ### Research Protocol
 
-- **Documentation:** Before making changes, check `../rag-docs/` for official documentation of each library/package or existing markdown conversation logs
-- If no documentation exists, read library/package versions from `../package.json`
+- **Documentation:** Before making changes, check `./.rag-docs/` for official documentation of each library/package or existing markdown conversation logs
+- If no documentation exists, read library/package versions from `./package.json`
 - Study documentation specific for that version from web, then implement solution based on those docs
 
 ## Package Management
@@ -25,7 +25,7 @@ trigger: always_on
 
 ## Import Aliases & Paths
 
-**Use defined import aliases in `../tsconfig.json`. If directories are not covered by aliases, create an MD file pointing out those directories.**
+**Use defined import aliases in `./tsconfig.json`. If directories are not covered by aliases, create an MD file pointing out those directories.**
 
 ## Styling Requirements
 
