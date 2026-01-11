@@ -68,7 +68,7 @@ This approach ensures:
 
 ## Examples
 
-**Good:** "Found relevant documentation in `./.rag-docs/sveltekit/routing.md` - implementing route guards as documented in section 3.2"
+**Good:** "Found relevant documentation in `./.rag-docs/Solid-Tanstack-Router/Solid TanStack Router Basic Solid Query File Based Example  TanStack Router Docs.md` - implementing route guards as documented in section 3.2"
 
 **Good:** "No local documentation found for this specific use case. Searching web for current SvelteKit file upload patterns..."
 
