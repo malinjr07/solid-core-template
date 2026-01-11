@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main, master]
 
+# Add this permissions block at the top level
+permissions:
+  contents: write
+
 env:
   # Template repository configuration
   TEMPLATE_REPO: malinjr07/solid-core-template
