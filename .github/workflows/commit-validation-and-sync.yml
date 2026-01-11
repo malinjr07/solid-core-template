@@ -2,9 +2,9 @@ name: Commit Validation and Template Sync
 
 on:
   push:
-    branches: ~
+    branches: [main, master]
   pull_request:
-    branches: ~
+    branches: [main, master]
 
 env:
   # Template repository configuration
@@ -227,7 +227,6 @@ jobs:
             SUMMARY+="- ✅ .rag-docs/ directory\n"
           fi
 
-          SUMMARY+="\nSource commit: ${{ needs.detect-changes.outputs.commit-sha }}\n"
           SUMMARY+="Sync date: $(date -u '+%Y-%m-%d %H:%M:%S UTC')\n"
 
           # Save summary to file for later use
@@ -289,7 +288,7 @@ jobs:
           # Create PR title and body
           PR_TITLE="feat: Sync changes from ${{ needs.detect-changes.outputs.source-repo }}"
           PR_BODY="## 🔄 Template Sync Request\n\n"
-          PR_BODY+="This PR contains changes synced from `${{ needs.detect-changes.outputs.source-repo }}`\n\n"
+          PR_BODY+="This PR contains changes synced from ${{ needs.detect-changes.outputs.source-repo }}\n\n"
           PR_BODY+="**Source Details:**\n"
           PR_BODY+="- Repository: ${{ needs.detect-changes.outputs.source-repo }}\n"
           PR_BODY+="- Commit: ${{ needs.detect-changes.outputs.commit-sha }}\n"
