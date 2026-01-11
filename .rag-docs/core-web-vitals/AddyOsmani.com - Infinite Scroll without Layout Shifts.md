@@ -1,4 +1,4 @@
-**Today, we’ll look at how patterns for loading long lists can impact the [Core Web Vitals](https://web.dev/vitals) with some recommended fixes.**
+# **Today, we’ll look at how patterns for loading long lists can impact the [Core Web Vitals](https://web.dev/vitals) with some recommended fixes.**
 
 Infinite scrolling is a loading strategy where new content is fetched and rendered while the user scrolls down a page. There isn’t a `Load More` button or `Next` link; the fetches for more content are automatically made in the background.
 
@@ -28,8 +28,6 @@ It’s not uncommon to see sites include a list of links, newsletter dialogs or 
 
 Below is a real-world example of layout shifts due to infinite scroll in a page with a footer:
 
- 
-
 ([YouTube link](https://www.youtube.com/embed/vo5VTg-9I4g))
 
 ### …If you haven’t reserved sufficient space for the next items (or prefetched these items) ahead of time
@@ -37,8 +35,6 @@ Below is a real-world example of layout shifts due to infinite scroll in a page 
 Have you ever scrolled down an infinite list only, to find that there’s a moment where you hit the bottom of the window and it “pops” when new content has been fetched and appended? By not (pre)fetching this content ahead of time or at least reserving space for the next sets of rows using a container or placeholder, there’s a chance you could be introducing surprising shifts to elements around or below the page.
 
 Below is a real-world example of the current Facebook.com feed which uses infinite scroll. While it creates placeholders for new content, these placeholders have different dimensions to the final content they include. Layout shifts are caused because sufficient space is not being reserved for new cards ahead of time:
-
- 
 
 Below, we can use **Chrome DevTools > Performance panel > Experience** to identify the elements contributing to layout shift. As suspected, they were the cards near the edge of the viewport:
 
@@ -58,13 +54,11 @@ Patterns like infinite scrolling may be subject to layout shifts on fling. Befor
 
 The three major tips I’d consider if using infinite scroll or load more are:
 
--   **Reserve enough space for content that may be loaded in before the user scrolls to that part of the page**. This can be acheived in a number of ways, including via Skeleton Placeholders for content that may require data fetches to complete before anything can be rendered.
--   **Remove the footer or any DOM elements at the bottom of the page that may be pushed down by content loading in**. This limits the impact on CLS.
--   **Prefetch data and images for below-the-fold content so that by the time a user scrolls that far, it’s already there**. This approach is more complex, but goes beyond just reserving space for the next sets of content, because there’s a good chance it has already been fetched.
+- **Reserve enough space for content that may be loaded in before the user scrolls to that part of the page**. This can be acheived in a number of ways, including via Skeleton Placeholders for content that may require data fetches to complete before anything can be rendered.
+- **Remove the footer or any DOM elements at the bottom of the page that may be pushed down by content loading in**. This limits the impact on CLS.
+- **Prefetch data and images for below-the-fold content so that by the time a user scrolls that far, it’s already there**. This approach is more complex, but goes beyond just reserving space for the next sets of content, because there’s a good chance it has already been fetched.
 
 Related to the last point, Instagram.com’s infinite scroll does not cause layout shifts and its single page app transitions occur within 500ms. Here is a video of the Instagram feed with the Web Vitals extension on:
-
- 
 
 ([YouTube link](https://www.youtube.com/embed/qjqeJhvowxo))
 
@@ -76,20 +70,16 @@ Below is a snapshot of Instagram.com’s [Chrome User Experience Report](https:/
 
 List virtualization libraries like [react-window](https://github.com/bvaughn/react-window) are a great option if you’re optimizing long lists. “Virtualizing” a list of items means you main a window and move that window around your list. Windowing in react-virtualized works by:
 
--   Having a small container DOM element (e.g `<ul>`) with relative positioning (window)
--   Having a big DOM element for scrolling
--   Absolutely positioning children inside the container, setting their styles for top, left, width and height.
--   Rather than rendering 1000s of elements from a list at once, virtualization focuses on rendering just items visible to the user.
+- Having a small container DOM element (e.g `<ul>`) with relative positioning (window)
+- Having a big DOM element for scrolling
+- Absolutely positioning children inside the container, setting their styles for top, left, width and height.
+- Rather than rendering 1000s of elements from a list at once, virtualization focuses on rendering just items visible to the user.
 
 Here’s a [demo](https://tmdb-viewer.netlify.app/) that uses the [Web Vitals extension](https://addyosmani.com/blog/web-vitals-extension/) to measure layout shift as we scroll through an infinite list. Notice how the combination of content always being fetched ahead of time and no footer make for a seamless experience:
-
- 
 
 ([YouTube link](https://www.youtube.com/embed/Kx1CWkYOxnE))
 
 What about “Load More”? Here’s a [different demo](https://tmdb-load-more.netlify.app/) implemented using react-window where this time a “Load more” button needs to be clicked to fetch the new rows. Similarly notice how thanks to list virtualization, there’s no layout shift:
-
- 
 
 ([YouTube link](https://www.youtube.com/embed/LVQqoItdRAA))
 
@@ -111,13 +101,13 @@ Users who rely on keyboards to navigate the web often consider infinite scrollin
 
 [**Wordpress.org’s**](http://wordpress.org's/) **accessibility guides advise against infinite scrolling because of very important accessibility problems, including:**
 
--   You can’t go back to your previous position using the “back” button of the browser.
--   It’s not easy to get to the footer or the last things in the infinite scroll.
--   When you load big files, there’s a large memory footprint.
--   Without Javascript, it doesn’t work.
--   You can’t control keyboard components only.
--   There is no clear auditory input or guidance for how infinite scrolling works with assistive devices.
--   There is no URL to a particular location on the website.
+- You can’t go back to your previous position using the “back” button of the browser.
+- It’s not easy to get to the footer or the last things in the infinite scroll.
+- When you load big files, there’s a large memory footprint.
+- Without Javascript, it doesn’t work.
+- You can’t control keyboard components only.
+- There is no clear auditory input or guidance for how infinite scrolling works with assistive devices.
+- There is no URL to a particular location on the website.
 
 As you evaluate options for how to render large lists efficiently, it is worth keeping these concerns in mind.
 
